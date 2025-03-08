@@ -1,6 +1,7 @@
 services:
   psql-db:
     image: postgres:16
+    platform: linux/amd64
     container_name: psql-db
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -21,7 +22,12 @@ services:
       retries: 5
 
   react-app:
-    build: ./react-app
+    build:
+      context: ./react-app
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+        - linux/arm64
     container_name: react-app
     hostname: react-app
     ports:
@@ -36,7 +42,12 @@ services:
       DB_HOST: psql-db
 
   flask-backend:
-    build: ./FlaskWebProject
+    build:
+      context: ./FlaskWebProject
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+        - linux/arm64
     container_name: flask-backend
     ports:
       - "5434:5434"
@@ -57,3 +68,4 @@ volumes:
 networks:
   ${NETWORK_NAME}:
     driver: bridge
+
