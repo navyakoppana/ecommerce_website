@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgreSQL2025",
+    "database": "ecommerce",
+    "host": "psql-db",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}
