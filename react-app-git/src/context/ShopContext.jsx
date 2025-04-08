@@ -27,7 +27,7 @@ const ShopContextProvider = (props) => {
         // Fetch products from the API
         const fetchProducts = async () => {
             try {
-                const response = await fetch('http://192.168.1.84:5434/api/products');
+                const response = await fetch('http://127.0.0.1:5434/api/products');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
